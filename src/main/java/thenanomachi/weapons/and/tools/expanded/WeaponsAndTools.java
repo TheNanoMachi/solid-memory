@@ -1,19 +1,29 @@
 package thenanomachi.weapons.and.tools.expanded;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class WeaponsAndTools implements ModInitializer {
 
-public static final Item Quarterstaff = new Item(new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item Quarterstaff = new Item(new Item.Settings().group(ItemGroup.COMBAT));
+
+	public static final Block ADVANCED_SMITHING_TABLE = new Block(FabricBlockSettings.of(Material.METAL).strength(2.5F, 7.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 
 	@Override
 	public void onInitialize() {
 
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "quarterstaff"), Quarterstaff);
+		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "advanced smithing table"), ADVANCED_SMITHING_TABLE);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "advanced smithing table"), new BlockItem(ADVANCED_SMITHING_TABLE, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
 	}
 }
