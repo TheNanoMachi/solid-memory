@@ -22,8 +22,8 @@ public class WeaponsAndTools implements ModInitializer {
 	public void onInitialize() {
 
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "quarterstaff"), Quarterstaff);
-		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "advanced smithing table"), ADVANCED_SMITHING_TABLE);
-		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "advanced smithing table"), new BlockItem(ADVANCED_SMITHING_TABLE, new Item.Settings().group(ItemGroup.DECORATIONS)));
+		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "advanced_smithing_table"), ADVANCED_SMITHING_TABLE);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "advanced_smithing_table"), new BlockItem(ADVANCED_SMITHING_TABLE, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
 	}
 }
