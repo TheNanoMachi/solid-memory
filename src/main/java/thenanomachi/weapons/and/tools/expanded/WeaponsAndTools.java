@@ -14,7 +14,7 @@ import net.minecraft.util.registry.Registry;
 
 public class WeaponsAndTools implements ModInitializer {
 
-	public static final Item Quarterstaff = new Item(new Item.Settings().group(ItemGroup.COMBAT));
+	public static final Item Quarterstaff = new Item(new Item.Settings().group(ItemGroup.COMBAT).maxCount(1).maxDamage(4));
 
 	public static final Block ADVANCED_SMITHING_TABLE = new Block(FabricBlockSettings.of(Material.METAL).strength(2.5F, 7.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 
