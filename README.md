@@ -1,8 +1,6 @@
-# Fabric Example Mod
+Made from the Fabric Example Mod.
 
-## Setup
-
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+An early Alpha for my mod, Weapons and Tools Expanded!
 
 ## License
 
