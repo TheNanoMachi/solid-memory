@@ -6,7 +6,7 @@
         "south": "minecraft:block/advanced_smithing_table_front",
         "east": "minecraft:block/advanced_smithing_table_front",
         "west": "minecraft:block/advanced_smithing_table_front",
-        "up": "minecraft:block/smithing_table_top",
-        "down": "minecraft:block/smithing_table_bottom"
+        "up": "minecraft:block/advanced_smithing_table_top",
+        "down": "minecraft:block/advanced_smithing_table_bottom"
     }
   }
