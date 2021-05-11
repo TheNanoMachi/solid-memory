@@ -22,7 +22,7 @@ public class WeaponsAndTools implements ModInitializer {
 
 	public static final Block ADVANCED_SMITHING_TABLE = new Block(FabricBlockSettings.of(Material.METAL).strength(2.5F, 7.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 
-	public static final ToolItem STEEL_SHOVEL = new ShovelItem(steel.INSTANCE, 3F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
+	public static final ToolItem STEEL_SHOVEL = new ShovelItem(steel.INSTANCE, 1F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
 
 	@Override
 	public void onInitialize() {
