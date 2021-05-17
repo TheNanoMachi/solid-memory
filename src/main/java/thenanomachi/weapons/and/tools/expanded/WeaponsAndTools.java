@@ -35,6 +35,8 @@ public class WeaponsAndTools implements ModInitializer {
 
 	public static final ToolItem STEEL_HOE = new SteelHoeItem(steel.INSTANCE, -1, -1.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
 
+	public static final Block STEEL_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(1F, 2F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
+
 	@Override
 	public void onInitialize() {
 
@@ -44,6 +46,11 @@ public class WeaponsAndTools implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_ingot"), STEEL_INGOT);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_shovel"), STEEL_SHOVEL);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_sword"), STEEL_SWORD);
+		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "steel_ore"), STEEL_ORE);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_ore"), new BlockItem(STEEL_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_pickaxe"), STEEL_PICKAXE);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_axe"), STEEL_AXE);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_hoe"), STEEL_HOE);
 
 	}
 }
