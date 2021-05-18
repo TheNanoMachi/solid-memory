@@ -19,7 +19,7 @@ import net.minecraft.util.registry.Registry;
 
 public class WeaponsAndTools implements ModInitializer {
 
-	public static final Item Quarterstaff = new Item(new Item.Settings().group(ItemGroup.COMBAT).maxCount(1).maxDamage(4));
+	public static final Item QUARTERSTAFF = new Item(new Item.Settings().group(ItemGroup.COMBAT).maxCount(1).maxDamage(4));
 
 	public static final Item STEEL_INGOT = new Item(new Item.Settings().group(ItemGroup.MISC).maxCount(64));
 
@@ -40,7 +40,7 @@ public class WeaponsAndTools implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "quarterstaff"), Quarterstaff);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "quarterstaff"), QUARTERSTAFF);
 		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "advanced_smithing_table"), ADVANCED_SMITHING_TABLE);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "advanced_smithing_table"), new BlockItem(ADVANCED_SMITHING_TABLE, new Item.Settings().group(ItemGroup.DECORATIONS)));
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_ingot"), STEEL_INGOT);
