@@ -1,12 +1,12 @@
 {
     "parent": "block/cube",
     "textures": {
-        "particle": "minecraft:block/advanced_smithing_table_front",
-        "north": "minecraft:block/advanced_smithing_table_front",
-        "south": "minecraft:block/advanced_smithing_table_front",
-        "east": "minecraft:block/advanced_smithing_table_front",
-        "west": "minecraft:block/advanced_smithing_table_front",
-        "up": "minecraft:block/advanced_smithing_table_top",
-        "down": "minecraft:block/advanced_smithing_table_bottom"
+        "particle": "weaponsandtools:block/advanced_smithing_table_front",
+        "north": "weaponsandtools:block/advanced_smithing_table_front",
+        "south": "weaponsandtools:block/advanced_smithing_table_front",
+        "east": "weaponsandtools:block/advanced_smithing_table_front",
+        "west": "weaponsandtools:block/advanced_smithing_table_front",
+        "up": "weaponsandtools:block/advanced_smithing_table_top",
+        "down": "weaponsandtools:block/advanced_smithing_table_bottom"
     }
   }
