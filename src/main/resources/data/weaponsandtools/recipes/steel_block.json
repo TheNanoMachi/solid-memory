@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RRR",
+        "RRR",
+        "RRR"
+    ],
+    "key": {
+      "R": {
+        "item": "weaponsandtools:steel"
+      }
+    },
+    "result": {
+      "item": "weaponsandtools:steel_block",
+      "count": 1
+    }
+  }

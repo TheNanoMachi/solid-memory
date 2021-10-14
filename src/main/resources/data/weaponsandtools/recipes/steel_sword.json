@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "R  ",
+      "R  ",
+      "W  "
+    ],
+    "key": {
+      "W": {
+        "item": "minecraft:stick"
+      },
+      "R": {
+        "item": "weaponsandtools:steel"
+      }
+    },
+    "result": {
+      "item": "weaponsandtools:steel_sword",
+      "count": 1
+    }
+  }
