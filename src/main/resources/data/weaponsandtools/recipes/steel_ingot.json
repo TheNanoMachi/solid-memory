@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+        "item": "minecraft:iron_ingot"
+    },
+    "result": {
+      "item": "weaponsandtools:steel_ingot",
+      "count": 1
+    },
+    "experience": 1.5,
+    "cookingtime": 150
+  }
