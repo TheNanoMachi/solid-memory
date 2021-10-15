@@ -50,6 +50,6 @@ public class WeaponsAndTools implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_axe"), STEEL_AXE);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_hoe"), STEEL_HOE);
 		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "steel_block"), STEEL_BLOCK);
-		Registry.register(Registry.ITEM, new Identifier("weapoonsandtools", "steel_block"), new BlockItem(STEEL_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_block"), new BlockItem(STEEL_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 	}
 }
