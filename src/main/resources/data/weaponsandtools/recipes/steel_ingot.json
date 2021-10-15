@@ -3,10 +3,7 @@
     "ingredient": {
         "item": "minecraft:iron_ingot"
     },
-    "result": {
-      "item": "weaponsandtools:steel_ingot",
-      "count": 1
-    },
+    "result": "weaponsandtools:steel_ingot",
     "experience": 1.5,
     "cookingtime": 150
   }
