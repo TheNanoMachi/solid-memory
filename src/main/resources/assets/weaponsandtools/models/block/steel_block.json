@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "weaponsandtools:block/steel_block_all",
+        "north": "weaponsandtools:block/steel_block_all",
+        "south": "weaponsandtools:block/steel_block_all",
+        "east": "weaponsandtools:block/steel_block_all",
+        "west": "weaponsandtools:block/steel_block_all",
+        "up": "weaponsandtools:block/steel_block_all",
+        "down": "weaponsandtools:block/steel_block_all"
+    }
+  }
