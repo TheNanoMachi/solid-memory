@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "R  ",
+        "   ",
+        "   "
+    ],
+    "key": {
+      "R": {
+        "item": "weaponsandtools:steel_block"
+      }
+    },
+    "result": {
+      "item": "weaponsandtools:steel_ingot",
+      "count": 9
+    }
+  }
