@@ -19,7 +19,7 @@ import net.minecraft.util.registry.Registry;
 
 public class WeaponsAndTools implements ModInitializer {
 
-	public static final Item QUARTERSTAFF = new Item(new Item.Settings().group(ItemGroup.COMBAT).maxCount(1).maxDamage(4));
+	public static final Item QUARTERSTAFF = new SwordItem(quarterstaff.INSTANCE, 0, 0F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
 
 	public static final Item STEEL_INGOT = new Item(new Item.Settings().group(ItemGroup.MISC).maxCount(64));
 
@@ -27,13 +27,13 @@ public class WeaponsAndTools implements ModInitializer {
 
 	public static final ToolItem STEEL_SHOVEL = new ShovelItem(steel.INSTANCE, 1F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
 
-	public static final ToolItem STEEL_SWORD = new SwordItem(steel.INSTANCE, 10, -3.0F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
+	public static final ToolItem STEEL_SWORD = new SwordItem(steel.INSTANCE, 0, -3.0F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
 
 	public static final ToolItem STEEL_PICKAXE = new SteelPickaxeItem(steel.INSTANCE, 1, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
 
-	public static final ToolItem STEEL_AXE = new SteelAxeItem(steel.INSTANCE, 15, -6.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
+	public static final ToolItem STEEL_AXE = new SteelAxeItem(steel.INSTANCE, 1, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
 
-	public static final ToolItem STEEL_HOE = new SteelHoeItem(steel.INSTANCE, -1, -1.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
+	public static final ToolItem STEEL_HOE = new SteelHoeItem(steel.INSTANCE, -7, 0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
 
 	public static final Block STEEL_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).strength(4F, 4F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
 
