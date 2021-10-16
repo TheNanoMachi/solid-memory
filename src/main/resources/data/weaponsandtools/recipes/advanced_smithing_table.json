@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "SSS",
+      "SCS",
+      "TTT"
+    ],
+    "key": {
+        "C": {
+            "item": "minecraft:smithing_table"
+        },
+        "S": {
+            "item": "weaponsandtools:steel_ingot"
+        },
+        "T": {
+            "item": "minecraft:smooth_stone"
+        }
+    },
+    "result": {
+      "item": "weaponsandtools:advanced_smithing_table",
+      "count": 1
+    }
+  }

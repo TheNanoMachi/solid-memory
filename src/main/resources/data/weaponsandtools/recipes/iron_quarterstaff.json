@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " XX",
+      "XRX",
+      "XX "
+    ],
+    "key": {
+      "R": {
+        "item": "weaponsandtools:quarterstaff"
+      },
+      "X": {
+        "item": "minecraft:iron_nugget"
+      }
+    },
+    "result": {
+      "item": "weaponsandtools:iron_quarterstaff",
+      "count": 1
+    }
+  }
