@@ -14,12 +14,14 @@ import net.minecraft.item.ToolItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-
+import net.minecraft.item.ToolMaterials;
 
 
 public class WeaponsAndTools implements ModInitializer {
 
 	public static final Item QUARTERSTAFF = new SwordItem(quarterstaff.INSTANCE, 0, 0F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
+
+	public static final Item IRON_QUARTERSTAFF = new SwordItem(ToolMaterials.IRON, 2, -1F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
 
 	public static final Item STEEL_INGOT = new Item(new Item.Settings().group(ItemGroup.MISC).maxCount(64));
 
@@ -41,6 +43,7 @@ public class WeaponsAndTools implements ModInitializer {
 	public void onInitialize() {
 
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "quarterstaff"), QUARTERSTAFF);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "iron_quarterstaff"), IRON_QUARTERSTAFF);
 		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "advanced_smithing_table"), ADVANCED_SMITHING_TABLE);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "advanced_smithing_table"), new BlockItem(ADVANCED_SMITHING_TABLE, new Item.Settings().group(ItemGroup.DECORATIONS)));
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_ingot"), STEEL_INGOT);
