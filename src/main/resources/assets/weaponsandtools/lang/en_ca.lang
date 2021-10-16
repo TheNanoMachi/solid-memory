@@ -1,0 +1,13 @@
+{
+    "item.weaponsandtools.quarterstaff.tooltip": "Quarterstaff",
+    "item.weaponsandtools.iron_quarterstaff.tooltip": "Iron Tipped Quarterstaff",
+    "item.weaponsandtools.advanced_smithing_table.tooltip": "Advanced Smithing Table",
+    "item.weaponsandtools.steel_axe.tooltip": "Steel Axe",
+    "item.weaponsandtools.steel_hoe.tooltip": "Steel Hoe",
+    "item.weaponsandtools.steel_sword.tooltip": "Steel Sword",
+    "item.weaponsandtools.steel_shovel.tooltip": "Steel Shovel",
+    "item.weaponsandtools.steel_pickaxe.tooltip": "Steel Pickaxe",
+    "block.weaponsandtools.steel_block.tooltip": "Steel Block",
+    "item.weaponsandtools.steel_ingot.tooltip": "Steel Ingot"
+}
+
