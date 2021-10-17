@@ -1,10 +1,9 @@
 package thenanomachi.weapons.and.tools.expanded;
 
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
-public class steel implements ToolMaterial{
+public class steel extends WeaponsAndTools implements ToolMaterial {
 
     public static final steel INSTANCE = new steel();
 
@@ -35,7 +34,7 @@ public class steel implements ToolMaterial{
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(Items.IRON_INGOT);
+        return Ingredient.ofItems(STEEL_INGOT);
     }
 
     
