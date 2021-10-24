@@ -4,7 +4,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
-public class quarterstaff implements ToolMaterial{
+public class quarterstaff extends WeaponsAndTools implements ToolMaterial{
 
     public static final quarterstaff INSTANCE = new quarterstaff();
 
