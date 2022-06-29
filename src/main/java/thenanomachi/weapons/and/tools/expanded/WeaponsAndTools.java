@@ -5,16 +5,11 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolItem;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.item.ToolMaterials;
 
 
 public class WeaponsAndTools implements ModInitializer {
@@ -36,8 +31,12 @@ public class WeaponsAndTools implements ModInitializer {
 	public static final ToolItem STEEL_AXE = new SteelAxeItem(steel.INSTANCE, 1, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
 
 	public static final ToolItem STEEL_HOE = new SteelHoeItem(steel.INSTANCE, -7, 0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
-
+	public static final ArmorMaterial SteelArmourMaterial = new SteelArmourMaterial();
 	public static final Block STEEL_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).strength(4F, 4F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
+	public static final Item STEEL_HELMET = new ArmorItem(SteelArmourMaterial, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
+	public static final Item STEEL_CHESTPLATE = new ArmorItem(SteelArmourMaterial, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
+	public static final Item STEEL_LEGGINGS = new ArmorItem(SteelArmourMaterial, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
+	public static final Item STEEL_BOOTS = new ArmorItem(SteelArmourMaterial, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
 
 	@Override
 	public void onInitialize() {
@@ -54,5 +53,9 @@ public class WeaponsAndTools implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_hoe"), STEEL_HOE);
 		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "steel_block"), STEEL_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_block"), new BlockItem(STEEL_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_helmet"), STEEL_HELMET);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_chestplate"), STEEL_CHESTPLATE);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_leggings"), STEEL_LEGGINGS);
+		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "steel_boots"), STEEL_BOOTS);
 	}
 }
