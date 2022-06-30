@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
@@ -37,10 +38,13 @@ public class WeaponsAndTools implements ModInitializer {
 	public static final Item STEEL_CHESTPLATE = new ArmorItem(SteelArmourMaterial, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
 	public static final Item STEEL_LEGGINGS = new ArmorItem(SteelArmourMaterial, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
 	public static final Item STEEL_BOOTS = new ArmorItem(SteelArmourMaterial, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
+	public static Enchantment NECROTIC_FIRE = new NecroticFireEnchantment();
+	public static Enchantment CHAOTIC = new ChaoticEnchantment();
 
 	@Override
 	public void onInitialize() {
-
+		Registry.register(Registry.ENCHANTMENT, new Identifier("weaponsandtools", "chaotic"), CHAOTIC);
+		Registry.register(Registry.ENCHANTMENT, new Identifier("weaponsandtools", "necrotic_fire"), NECROTIC_FIRE);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "quarterstaff"), QUARTERSTAFF);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "iron_quarterstaff"), IRON_QUARTERSTAFF);
 		Registry.register(Registry.BLOCK, new Identifier("weaponsandtools", "advanced_smithing_table"), ADVANCED_SMITHING_TABLE);
