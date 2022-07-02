@@ -4,9 +4,11 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.enchantment.ChannelingEnchantment;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.ActionResult;
@@ -19,6 +21,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.Map;
 
 public class AdvancedSmithingTable extends BlockWithEntity {
     protected AdvancedSmithingTable(Settings settings) {
@@ -53,15 +56,26 @@ public class AdvancedSmithingTable extends BlockWithEntity {
                 // read nbt of the associated entity
                 AdvancedSmithingTableEntity currentBlockEntity = (AdvancedSmithingTableEntity) world.getBlockEntity(pos);
                 if (currentBlockEntity != null) {
-                    String[] recipe = {"Air", "Air", "Steel Block", "Air", "Air", "Air", "Air", "Air", "Air"};
+                    String[] recipe = {"Air", "Wither Skeleton Skull", "Air", "Fire Charge", "Air", "Fire Charge", "Air", "Wither Skeleton Skull", "Air"};
                     String[] copy = new String[9];
                     for (int i = 0; i < 9; ++i) {
                         copy[i] = currentBlockEntity.items.get(i).getName().getString();
                     }
-                    if(Arrays.equals(recipe, copy)) {
-                        ItemScatterer.spawn(world, pos.getX(), pos.getY() + 1, pos.getZ(), new ItemStack(WeaponsAndTools.STEEL_SWORD));
-                        for (ItemStack i : currentBlockEntity.items) {
-                            i.decrement(1);
+                    if (Arrays.equals(recipe, copy)) {
+                        ItemStack result = player.getOffHandStack();
+                        if (result.getItem() instanceof ToolItem && !(result.getEnchantments().toString().contains("id:\"weaponsandtools:necrotic_fire\",lvl:5s"))) {
+                            Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromNbt(result.getEnchantments());
+                            int necrolvl = 0;
+                            if (enchantments.containsKey(WeaponsAndTools.NECROTIC_FIRE)) {
+                                necrolvl = enchantments.get(WeaponsAndTools.NECROTIC_FIRE);
+                            }
+                            enchantments.remove(WeaponsAndTools.NECROTIC_FIRE);
+                            EnchantmentHelper.set(enchantments, result);
+                            result.addEnchantment(WeaponsAndTools.NECROTIC_FIRE, necrolvl + 1);
+                            ItemScatterer.spawn(world, pos.getX(), pos.getY() + 1, pos.getZ(), result);
+                            for (ItemStack i : currentBlockEntity.items) {
+                                i.decrement(1);
+                            }
                         }
                     }
                 }
