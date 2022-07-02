@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "thenanomachi.weapons.and.tools.expanded.WeaponsAndTools"
+    ],
+    "client": [
+      "thenanomachi.weapons.and.tools.expanded.WeaponsAndToolsClient"
     ]
   },
   "mixins": [
