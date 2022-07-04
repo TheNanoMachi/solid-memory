@@ -43,22 +43,12 @@ public class ChaoticEnchantment extends Enchantment {
             // 4. weakness to the opponent (roll 3)
             // 5. levitates the opponent (roll 4)
             int choice = random.nextInt(5);
-            switch(choice) {
-                case 0:
-                    user.damage(DamageSource.MAGIC, user.getMaxHealth()/(level+1));
-                    break;
-                case 1:
-                    ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20*level, level-1));
-                    break;
-                case 2:
-                    ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 20*level, level-1));
-                    break;
-                case 3:
-                    ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 20*level, level-1));
-                    break;
-                case 4:
-                    ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 20*level, level-1));
-                    break;
+            switch (choice) {
+                case 0 -> user.damage(DamageSource.MAGIC, user.getMaxHealth() / (level + 1));
+                case 1 -> ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * level, level - 1));
+                case 2 -> ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 20 * level, level - 1));
+                case 3 -> ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 20 * level, level - 1));
+                case 4 -> ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 20 * level, level - 1));
             }
         }
     }

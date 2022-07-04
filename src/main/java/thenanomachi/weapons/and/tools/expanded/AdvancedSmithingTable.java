@@ -4,23 +4,24 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.enchantment.ChannelingEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 public class AdvancedSmithingTable extends BlockWithEntity {
@@ -53,35 +54,48 @@ public class AdvancedSmithingTable extends BlockWithEntity {
                 }
             }
             if(player.isHolding(WeaponsAndTools.FORGE_HAMMER)) {
-                // read nbt of the associated entity
                 AdvancedSmithingTableEntity currentBlockEntity = (AdvancedSmithingTableEntity) world.getBlockEntity(pos);
                 if (currentBlockEntity != null) {
-                    String[] recipe = {"Air", "Wither Skeleton Skull", "Air", "Fire Charge", "Air", "Fire Charge", "Air", "Wither Skeleton Skull", "Air"};
+                    String[] necroRecipe = {"Air", "Wither Skeleton Skull", "Air", "Fire Charge", "Air", "Fire Charge", "Air", "Wither Skeleton Skull", "Air"};
+                    String[] chaoticRecipe = {"Iron Ingot", "Redstone Dust", "Iron Ingot", "Redstone Dust", "Air", "Redstone Dust", "Iron Ingot", "Redstone Dust", "Iron Ingot"};
+                    String[][] recipes = {necroRecipe, chaoticRecipe};
                     String[] copy = new String[9];
                     for (int i = 0; i < 9; ++i) {
                         copy[i] = currentBlockEntity.items.get(i).getName().getString();
                     }
-                    if (Arrays.equals(recipe, copy)) {
-                        ItemStack result = player.getOffHandStack();
-                        if (result.getItem() instanceof ToolItem && !(result.getEnchantments().toString().contains("id:\"weaponsandtools:necrotic_fire\",lvl:5s"))) {
-                            Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromNbt(result.getEnchantments());
-                            int necrolvl = 0;
-                            if (enchantments.containsKey(WeaponsAndTools.NECROTIC_FIRE)) {
-                                necrolvl = enchantments.get(WeaponsAndTools.NECROTIC_FIRE);
-                            }
-                            enchantments.remove(WeaponsAndTools.NECROTIC_FIRE);
-                            EnchantmentHelper.set(enchantments, result);
-                            result.addEnchantment(WeaponsAndTools.NECROTIC_FIRE, necrolvl + 1);
-                            ItemScatterer.spawn(world, pos.getX(), pos.getY() + 1, pos.getZ(), result);
-                            for (ItemStack i : currentBlockEntity.items) {
-                                i.decrement(1);
-                            }
+                    int j;
+                    for (j = 0; j < recipes.length; ++j) {
+                        if (Arrays.equals(recipes[j], copy)) {
+                            break;
                         }
+                    }
+                    switch (j) {
+                        case 0 -> craft(world, pos, player, currentBlockEntity, WeaponsAndTools.NECROTIC_FIRE);
+                        case 1 -> craft(world, pos, player, currentBlockEntity, WeaponsAndTools.CHAOTIC);
+                        default -> System.out.println("invalid recipe");
                     }
                 }
             }
         }
         return ActionResult.SUCCESS;
+    }
+
+    private void craft(World world, BlockPos pos, PlayerEntity player, AdvancedSmithingTableEntity currentBlockEntity, Enchantment enchantment) {
+        ItemStack result = player.getOffHandStack();
+        if (result.getItem() instanceof ToolItem && (EnchantmentHelper.getLevel(enchantment, result) < enchantment.getMaxLevel())) {
+            Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromNbt(result.getEnchantments());
+            int lvl = 0;
+            if (enchantments.containsKey(enchantment)) {
+                lvl = enchantments.get(enchantment);
+            }
+            enchantments.remove(enchantment);
+            EnchantmentHelper.set(enchantments, result);
+            result.addEnchantment(enchantment, lvl + 1);
+            ItemScatterer.spawn(world, pos.getX(), pos.getY() + 1, pos.getZ(), result);
+            for (ItemStack i : currentBlockEntity.items) {
+                i.decrement(1);
+            }
+        }
     }
 
     @Override

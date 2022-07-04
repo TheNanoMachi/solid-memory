@@ -21,9 +21,7 @@ import org.lwjgl.system.CallbackI;
 public class WeaponsAndTools implements ModInitializer {
 
 	public static final Item QUARTERSTAFF = new SwordItem(quarterstaff.INSTANCE, 0, 0F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
-
 	public static final Item IRON_QUARTERSTAFF = new SwordItem(ToolMaterials.IRON, 2, -1F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
-
 	public static final Item STEEL_INGOT = new Item(new Item.Settings().group(ItemGroup.MISC).maxCount(64));
 	public static final String MOD_ID = "weaponsandtools";
 	public static final Identifier AST = new Identifier(MOD_ID, "advanced_smithing_table");
