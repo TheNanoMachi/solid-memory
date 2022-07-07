@@ -1,5 +1,6 @@
 package thenanomachi.weapons.and.tools.expanded;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -22,15 +23,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.Map;
 
-public class AdvancedSmithingTable extends BlockWithEntity {
-    protected AdvancedSmithingTable(Settings settings) {
+public class NetheriteSmithingTable extends BlockWithEntity {
+    protected NetheriteSmithingTable(AbstractBlock.Settings settings) {
         super(settings);
     }
 
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AdvancedSmithingTableEntity(pos, state);
+        return new NetheriteSmithingTableEntity(pos, state);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class AdvancedSmithingTable extends BlockWithEntity {
                 }
             }
             if(player.isHolding(WeaponsAndTools.FORGE_HAMMER)) {
-                AdvancedSmithingTableEntity currentBlockEntity = (AdvancedSmithingTableEntity) world.getBlockEntity(pos);
+                NetheriteSmithingTableEntity currentBlockEntity = (NetheriteSmithingTableEntity) world.getBlockEntity(pos);
                 if (currentBlockEntity != null) {
                     String[] necroRecipe = {"Air", "Wither Skeleton Skull", "Air", "Fire Charge", "Air", "Fire Charge", "Air", "Wither Skeleton Skull", "Air"};
                     String[] chaoticRecipe = {"Iron Ingot", "Redstone Dust", "Iron Ingot", "Redstone Dust", "Air", "Redstone Dust", "Iron Ingot", "Redstone Dust", "Iron Ingot"};
@@ -74,7 +75,7 @@ public class AdvancedSmithingTable extends BlockWithEntity {
         return ActionResult.SUCCESS;
     }
 
-    private void craft(World world, BlockPos pos, PlayerEntity player, AdvancedSmithingTableEntity currentBlockEntity, Enchantment enchantment) {
+    private void craft(World world, BlockPos pos, PlayerEntity player, NetheriteSmithingTableEntity currentBlockEntity, Enchantment enchantment) {
         ItemStack result = player.getOffHandStack();
         if (result.getItem() instanceof ToolItem && (EnchantmentHelper.getLevel(enchantment, result) < enchantment.getMaxLevel())) {
             Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromNbt(result.getEnchantments());
@@ -111,8 +112,8 @@ public class AdvancedSmithingTable extends BlockWithEntity {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof AdvancedSmithingTableEntity) {
-                ItemScatterer.spawn(world, pos, (AdvancedSmithingTableEntity) blockEntity);
+            if (blockEntity instanceof NetheriteSmithingTableEntity) {
+                ItemScatterer.spawn(world, pos, (NetheriteSmithingTableEntity) blockEntity);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
         }

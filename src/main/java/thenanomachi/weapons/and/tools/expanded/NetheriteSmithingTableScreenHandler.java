@@ -8,36 +8,31 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-public class AdvancedSmithingTableScreenHandler extends ScreenHandler {
+public class NetheriteSmithingTableScreenHandler extends ScreenHandler {
     private final Inventory inventory;
-    public AdvancedSmithingTableScreenHandler(int syncId, PlayerInventory inv) {
-        this(syncId, inv, new SimpleInventory(9));
+    public NetheriteSmithingTableScreenHandler(int syncId, PlayerInventory inv) {
+        this(syncId, inv, new SimpleInventory(25));
     }
 
-    public AdvancedSmithingTableScreenHandler(int syncID, PlayerInventory inv, Inventory inventory) {
-        super(WeaponsAndTools.ADVANCED_SMITHING_TABLE_SCREEN_HANDLER, syncID);
+    public NetheriteSmithingTableScreenHandler(int syncID, PlayerInventory inv, Inventory inventory) {
+        super(WeaponsAndTools.NETHERITE_SMITHING_TABLE_SCREEN_HANDLER, syncID);
         this.inventory = inventory;
         inventory.onOpen(inv.player);
         int m;
         int l;
-        for(m = 0; m < 3; ++m) {
-            for(l = 0; l < 3; ++l) {
-                this.addSlot(new Slot(inventory, l + m * 3, 62 + l * 18, 17 + m * 18));
+        for(m = 0; m < 5; ++m) {
+            for(l = 0; l < 5; ++l) {
+                this.addSlot(new Slot(inventory, l + m * 5, 44 + l * 18,  -7 + m * 18));
             }
         }
         for (m = 0; m < 3; ++m) {
             for (l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(inv, l + m * 9 + 9, 8 + l * 18, 84 + m * 18));
+                this.addSlot(new Slot(inv, l + m * 9 + 9, 8 + l * 18, (84 - 25 + 39) + (m * 18)));
             }
         }
         for (m = 0; m < 9; ++m) {
-            this.addSlot(new Slot(inv, m, 8 + m * 18, 142));
+            this.addSlot(new Slot(inv, m, 8 + m * 18, 142-25+39));
         }
-    }
-
-    @Override
-    public boolean canUse(PlayerEntity player) {
-        return this.inventory.canPlayerUse(player);
     }
 
     @Override
@@ -63,5 +58,10 @@ public class AdvancedSmithingTableScreenHandler extends ScreenHandler {
         }
 
         return newStack;
+    }
+
+    @Override
+    public boolean canUse(PlayerEntity player) {
+        return this.inventory.canPlayerUse(player);
     }
 }

@@ -1,6 +1,3 @@
 {
-    "parent": "minecraft:item/generated",
-    "textures": {
-        "layer0": "weaponsandtools:item/advanced_smithing_table"
-    }
+    "parent": "weaponsandtools:block/advanced_smithing_table"
 }

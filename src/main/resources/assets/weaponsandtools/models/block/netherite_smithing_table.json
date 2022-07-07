@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "weaponsandtools:block/netherite_smithing_table_front",
+    "north": "weaponsandtools:block/netherite_smithing_table_front",
+    "south": "weaponsandtools:block/netherite_smithing_table_front",
+    "east": "weaponsandtools:block/netherite_smithing_table_front",
+    "west": "weaponsandtools:block/netherite_smithing_table_front",
+    "up": "weaponsandtools:block/netherite_smithing_table_top",
+    "down": "weaponsandtools:block/netherite_smithing_table_top"
+  }
+}

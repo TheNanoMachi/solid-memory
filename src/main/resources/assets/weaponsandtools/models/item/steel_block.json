@@ -1,6 +1,3 @@
 {
-    "parent": "minecraft:item/generated",
-    "textures": {
-        "layer0": "weaponsandtools:item/steel_block"
-    }
+    "parent": "weaponsandtools:block/steel_block"
 }

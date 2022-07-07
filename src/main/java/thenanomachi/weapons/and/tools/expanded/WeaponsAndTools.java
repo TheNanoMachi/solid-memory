@@ -5,9 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
@@ -16,7 +14,6 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.lwjgl.system.CallbackI;
 
 public class WeaponsAndTools implements ModInitializer {
 
@@ -25,15 +22,25 @@ public class WeaponsAndTools implements ModInitializer {
 	public static final Item STEEL_INGOT = new Item(new Item.Settings().group(ItemGroup.MISC).maxCount(64));
 	public static final String MOD_ID = "weaponsandtools";
 	public static final Identifier AST = new Identifier(MOD_ID, "advanced_smithing_table");
+	public static final Identifier NST = new Identifier(MOD_ID, "netherite_smithing_table");
 	public static final Block ADVANCED_SMITHING_TABLE;
 	public static final BlockItem ADVANCED_SMITHING_TABLE_ITEM;
 	public static final Item FORGE_HAMMER = new SwordItem(steel.INSTANCE, -2, -3.0F, new Item.Settings().group(ItemGroup.COMBAT).maxCount(1));
+	public static final Block NETHERITE_SMITHING_TABLE;
+	public static final BlockItem NETHERITE_SMITHING_TABLE_ITEM;
+	public static BlockEntityType<NetheriteSmithingTableEntity> NETHERITE_SMITHING_TABLE_ENTITY;
+	public static final ScreenHandlerType<NetheriteSmithingTableScreenHandler> NETHERITE_SMITHING_TABLE_SCREEN_HANDLER;
 	public static final ScreenHandlerType<AdvancedSmithingTableScreenHandler> ADVANCED_SMITHING_TABLE_SCREEN_HANDLER;
 	static {
 		ADVANCED_SMITHING_TABLE = Registry.register(Registry.BLOCK, AST, new AdvancedSmithingTable(FabricBlockSettings.of(Material.METAL).strength(2.5F, 7.0F).sounds(BlockSoundGroup.STONE)));
 		ADVANCED_SMITHING_TABLE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "weaponsandtools:advanced_smithing_table_entity", FabricBlockEntityTypeBuilder.create(AdvancedSmithingTableEntity::new, ADVANCED_SMITHING_TABLE).build(null));
 		ADVANCED_SMITHING_TABLE_ITEM = Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "advanced_smithing_table"), new BlockItem(ADVANCED_SMITHING_TABLE, new Item.Settings().group(ItemGroup.MISC)));
 		ADVANCED_SMITHING_TABLE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(AST, AdvancedSmithingTableScreenHandler::new);
+		NETHERITE_SMITHING_TABLE = Registry.register(Registry.BLOCK, NST, new NetheriteSmithingTable(FabricBlockSettings.of(Material.METAL).strength(2.5F, 1000000F).sounds(BlockSoundGroup.STONE)));
+		NETHERITE_SMITHING_TABLE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "weaponsandtools:netherite_smithing_table_entity", FabricBlockEntityTypeBuilder.create(NetheriteSmithingTableEntity::new, NETHERITE_SMITHING_TABLE).build(null));
+		NETHERITE_SMITHING_TABLE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(NST, NetheriteSmithingTableScreenHandler::new);
+		NETHERITE_SMITHING_TABLE_ITEM = Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "netherite_smithing_table"), new BlockItem(NETHERITE_SMITHING_TABLE, new Item.Settings().group(ItemGroup.MISC)));
+
 	}
 	public static BlockEntityType<AdvancedSmithingTableEntity> ADVANCED_SMITHING_TABLE_ENTITY;
 	public static final ToolItem STEEL_SHOVEL = new ShovelItem(steel.INSTANCE, 1F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
