@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
@@ -59,6 +60,7 @@ public class WeaponsAndTools implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		FluidStorage.SIDED.registerForBlockEntity((n, direction) -> n.lavaStorage, NETHERITE_SMITHING_TABLE_ENTITY);
 		Registry.register(Registry.ENCHANTMENT, new Identifier("weaponsandtools", "chaotic"), CHAOTIC);
 		Registry.register(Registry.ENCHANTMENT, new Identifier("weaponsandtools", "necrotic_fire"), NECROTIC_FIRE);
 		Registry.register(Registry.ITEM, new Identifier("weaponsandtools", "quarterstaff"), QUARTERSTAFF);

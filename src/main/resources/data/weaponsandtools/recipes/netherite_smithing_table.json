@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ZZZ",
+    "SCS",
+    "XXX"
+  ],
+  "key": {
+    "C": {
+      "item": "weaponsandtools:advanced_smithing_table"
+    },
+    "S": {
+      "item": "minecraft:blast_furnace"
+    },
+    "X": {
+      "item": "weaponsandtools:advanced_smithing_table"
+    },
+    "Z": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "weaponsandtools:netherite_smithing_table",
+    "count": 1
+  }
+}
