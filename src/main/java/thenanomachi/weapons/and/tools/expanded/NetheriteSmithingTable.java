@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class NetheriteSmithingTable extends BlockWithEntity {
-    protected NetheriteSmithingTable(AbstractBlock.Settings settings) {
+    protected NetheriteSmithingTable(Settings settings) {
         super(settings);
     }
 
