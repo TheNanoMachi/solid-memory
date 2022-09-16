@@ -4,19 +4,23 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
 public class LavaGeneratorScreenHandler extends ScreenHandler {
+    private String lavaDisplay;
     private final Inventory inventory;
-    public LavaGeneratorScreenHandler(int syncId, PlayerInventory inv) {
+    public LavaGeneratorScreenHandler(int syncId, PlayerInventory inv, PacketByteBuf buf) {
         this(syncId, inv, new SimpleInventory(1));
+        lavaDisplay = buf.readString();
     }
 
     protected LavaGeneratorScreenHandler(int syncID, PlayerInventory inv, Inventory inventory) {
         super(WeaponsAndTools.LAVA_GENERATOR_SCREEN_HANDLER, syncID);
         this.inventory = inventory;
         inventory.onOpen(inv.player);
+        lavaDisplay = "";
         int m;
         int l;
 

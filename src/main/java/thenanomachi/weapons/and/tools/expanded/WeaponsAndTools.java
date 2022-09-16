@@ -3,6 +3,7 @@ package thenanomachi.weapons.and.tools.expanded;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.minecraft.block.Block;
@@ -35,7 +36,7 @@ public class WeaponsAndTools implements ModInitializer {
 	public static final Block LAVA_GENERATOR;
 	public static final BlockItem LAVA_GENERATOR_ITEM;
 	public static BlockEntityType<LavaGeneratorEntity> LAVA_GENERATOR_ENTITY;
-	public static final ScreenHandlerType<LavaGeneratorScreenHandler> LAVA_GENERATOR_SCREEN_HANDLER;
+	public static ScreenHandlerType<LavaGeneratorScreenHandler> LAVA_GENERATOR_SCREEN_HANDLER = new ExtendedScreenHandlerType<>(LavaGeneratorScreenHandler::new);
 	public static final Identifier LG = new Identifier(MOD_ID, "lava_generator");
 	static {
 		ADVANCED_SMITHING_TABLE = Registry.register(Registry.BLOCK, AST, new AdvancedSmithingTable(FabricBlockSettings.of(Material.METAL).strength(2.5F, 7.0F).sounds(BlockSoundGroup.STONE)));
@@ -48,7 +49,7 @@ public class WeaponsAndTools implements ModInitializer {
 		NETHERITE_SMITHING_TABLE_ITEM = Registry.register(Registry.ITEM, NST, new BlockItem(NETHERITE_SMITHING_TABLE, new Item.Settings().group(ItemGroup.MISC)));
 		LAVA_GENERATOR = Registry.register(Registry.BLOCK, LG, new NetheriteSmithingTable(FabricBlockSettings.of(Material.METAL).strength(2.5F, 10F).sounds(BlockSoundGroup.STONE)));
 		LAVA_GENERATOR_ITEM = Registry.register(Registry.ITEM, LG, new BlockItem(LAVA_GENERATOR, new Item.Settings().group(ItemGroup.MISC)));
-		LAVA_GENERATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(LG, LavaGeneratorScreenHandler::new);
+		LAVA_GENERATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerExtended(LG, LavaGeneratorScreenHandler::new);
 	}
 	public static BlockEntityType<AdvancedSmithingTableEntity> ADVANCED_SMITHING_TABLE_ENTITY;
 	public static final ToolItem STEEL_SHOVEL = new ShovelItem(steel.INSTANCE, 1F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));

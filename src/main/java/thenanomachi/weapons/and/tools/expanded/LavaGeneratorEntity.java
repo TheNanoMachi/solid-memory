@@ -1,5 +1,6 @@
 package thenanomachi.weapons.and.tools.expanded;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
@@ -15,17 +16,20 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 
 import java.util.Arrays;
 
 @SuppressWarnings("ALL")
-public class LavaGeneratorEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class LavaGeneratorEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory{
     // outputs
     private static final FluidVariant LAVA = FluidVariant.of(Fluids.LAVA);
     // valid inputs
@@ -117,6 +121,7 @@ public class LavaGeneratorEntity extends BlockEntity implements NamedScreenHandl
             inventory.getStack(0).decrement(1);
             transaction.commit();
         }
+
     }
 
     @Nullable
@@ -129,4 +134,15 @@ public class LavaGeneratorEntity extends BlockEntity implements NamedScreenHandl
     public DefaultedList<ItemStack> getItems() {
         return null;
     }
+
+    @Override
+    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+        long current = tank.amount;
+        buf.writeString(Long.toString(current));
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, LavaGeneratorEntity be) {
+        be.convert();
+    }
+
 }
