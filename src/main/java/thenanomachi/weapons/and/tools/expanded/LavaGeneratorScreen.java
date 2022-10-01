@@ -1,7 +1,6 @@
 package thenanomachi.weapons.and.tools.expanded;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -11,6 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class LavaGeneratorScreen extends HandledScreen<LavaGeneratorScreenHandler> {
     private static final Identifier TEXTURE = new Identifier("weaponsandtools", "textures/gui/container/lava_generator.png");
+
 
     public LavaGeneratorScreen(LavaGeneratorScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);

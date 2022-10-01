@@ -47,9 +47,10 @@ public class WeaponsAndTools implements ModInitializer {
 		NETHERITE_SMITHING_TABLE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "weaponsandtools:netherite_smithing_table_entity", FabricBlockEntityTypeBuilder.create(NetheriteSmithingTableEntity::new, NETHERITE_SMITHING_TABLE).build(null));
 		NETHERITE_SMITHING_TABLE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(NST, NetheriteSmithingTableScreenHandler::new);
 		NETHERITE_SMITHING_TABLE_ITEM = Registry.register(Registry.ITEM, NST, new BlockItem(NETHERITE_SMITHING_TABLE, new Item.Settings().group(ItemGroup.MISC)));
-		LAVA_GENERATOR = Registry.register(Registry.BLOCK, LG, new NetheriteSmithingTable(FabricBlockSettings.of(Material.METAL).strength(2.5F, 10F).sounds(BlockSoundGroup.STONE)));
+		LAVA_GENERATOR = Registry.register(Registry.BLOCK, LG, new LavaGenerator(FabricBlockSettings.of(Material.METAL).strength(2.5F, 10F).sounds(BlockSoundGroup.STONE)));
+		LAVA_GENERATOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, LG, FabricBlockEntityTypeBuilder.create(LavaGeneratorEntity::new, LAVA_GENERATOR).build(null));
 		LAVA_GENERATOR_ITEM = Registry.register(Registry.ITEM, LG, new BlockItem(LAVA_GENERATOR, new Item.Settings().group(ItemGroup.MISC)));
-		LAVA_GENERATOR_SCREEN_HANDLER = ScreenHandlerRegistry.registerExtended(LG, LavaGeneratorScreenHandler::new);
+		LAVA_GENERATOR_SCREEN_HANDLER = Registry.register(Registry.SCREEN_HANDLER, LG, LAVA_GENERATOR_SCREEN_HANDLER);
 	}
 	public static BlockEntityType<AdvancedSmithingTableEntity> ADVANCED_SMITHING_TABLE_ENTITY;
 	public static final ToolItem STEEL_SHOVEL = new ShovelItem(steel.INSTANCE, 1F, -3.0F, new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));

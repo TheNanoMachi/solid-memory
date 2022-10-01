@@ -13,8 +13,10 @@ public class LavaGeneratorScreenHandler extends ScreenHandler {
     private final Inventory inventory;
     public LavaGeneratorScreenHandler(int syncId, PlayerInventory inv, PacketByteBuf buf) {
         this(syncId, inv, new SimpleInventory(1));
-        lavaDisplay = buf.readString();
+        this.lavaDisplay = buf.readString();
     }
+
+
 
     protected LavaGeneratorScreenHandler(int syncID, PlayerInventory inv, Inventory inventory) {
         super(WeaponsAndTools.LAVA_GENERATOR_SCREEN_HANDLER, syncID);

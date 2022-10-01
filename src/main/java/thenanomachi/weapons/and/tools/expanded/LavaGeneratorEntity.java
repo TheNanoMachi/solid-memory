@@ -24,12 +24,13 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 
 import java.util.Arrays;
 
 @SuppressWarnings("ALL")
-public class LavaGeneratorEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory{
+public class LavaGeneratorEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
+
+    public final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
     // outputs
     private static final FluidVariant LAVA = FluidVariant.of(Fluids.LAVA);
     // valid inputs
@@ -91,10 +92,14 @@ public class LavaGeneratorEntity extends BlockEntity implements ExtendedScreenHa
         super(WeaponsAndTools.LAVA_GENERATOR_ENTITY, pos, state);
     }
 
+
+
     @Override
     public Text getDisplayName() {
         return null;
+
     }
+
 
     @Override
     public void writeNbt(NbtCompound nbt) {
@@ -127,12 +132,12 @@ public class LavaGeneratorEntity extends BlockEntity implements ExtendedScreenHa
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return null;
+        return new LavaGeneratorScreenHandler(syncId, inv, this);
     }
 
     @Override
     public DefaultedList<ItemStack> getItems() {
-        return null;
+        return items;
     }
 
     @Override

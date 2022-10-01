@@ -11,5 +11,6 @@ public class WeaponsAndToolsClient implements ClientModInitializer {
     public void onInitializeClient() {
         ScreenRegistry.register(WeaponsAndTools.ADVANCED_SMITHING_TABLE_SCREEN_HANDLER, AdvancedSmithingTableScreen::new);
         ScreenRegistry.register(WeaponsAndTools.NETHERITE_SMITHING_TABLE_SCREEN_HANDLER, NetheriteSmithingTableScreen::new);
+        ScreenRegistry.register(WeaponsAndTools.LAVA_GENERATOR_SCREEN_HANDLER, LavaGeneratorScreen::new);
     }
 }
